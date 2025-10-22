@@ -14,7 +14,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24) 
 # This is where our database will be stored
 # Get the database URL from the hosting environment (like Render)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1) 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 # This setting is to quiet a deprecation warning
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 
@@ -189,4 +189,5 @@ if __name__ == '__main__':
     # Before the first request, create the database tables if they don't exist
     with app.app_context():
         db.create_all()
+
     app.run(debug=True) # debug=True helps with development, turn off for production
