@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SafeKeep</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">SafeKeep</h1>
+            <div class="user-info">
+                <span>Welcome, <strong>{{ session.username }}</strong>!</span>
+                <a href="{{ url_for('logout') }}" class="btn btn-logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="content-columns">
+            <div class="column">
+                <h2>My Notes</h2>
+                <form action="{{ url_for('add_note') }}" method="POST" class="add-form">
+                    <textarea name="content" placeholder="Write a new note..." required></textarea>
+                    <button type="submit" class="btn btn-add">Add Note</button>
+                </form>
+                <div class="item-list">
+                    {% for note in notes|reverse %}
+                    <div class="item">
+                        <p>{{ note.content }}</p>
+                        <a href="{{ url_for('delete_note', note_id=note.id) }}" class="delete-link">Delete</a>
+                    </div>
+                    {% else %}
+                    <p>You have no notes yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="column">
+                <h2>My Contacts</h2>
+                <form action="{{ url_for('add_contact') }}" method="POST" class="add-form">
+                    <input type="text" name="name" placeholder="Contact Name" required>
+                    <input type="text" name="number" placeholder="Mobile Number" required>
+                    <button type="submit" class="btn btn-add">Add Contact</button>
+                </form>
+                <div class="item-list">
+                    {% for contact in contacts|reverse %}
+                    <div class="item">
+                        <p><strong>{{ contact.name }}:</strong> {{ contact.number }}</p>
+                        <a href="{{ url_for('delete_contact', contact_id=contact.id) }}" class="delete-link">Delete</a>
+                    </div>
+                    {% else %}
+                    <p>You have no contacts yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

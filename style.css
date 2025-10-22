@@ -1,0 +1,205 @@
+/* --- General Styling & Layout --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: #3498db;
+    --primary-hover: #2980b9;
+    --background-color: #f4f7f9;
+    --card-background: #ffffff;
+    --text-color: #333;
+    --border-color: #e0e0e0;
+    --danger-color: #e74c3c;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --info-color: #9b59b6;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Login/Signup Form --- */
+.form-container {
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 40px;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
+
+.form-container h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.form-container p {
+    margin-bottom: 30px;
+    color: #777;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.switch-form {
+    margin-top: 20px;
+}
+
+.switch-form a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* --- Alerts/Flash Messages --- */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+}
+.alert-success { background-color: var(--success-color); }
+.alert-danger { background-color: var(--danger-color); }
+.alert-warning { background-color: var(--warning-color); }
+.alert-info { background-color: var(--info-color); }
+
+/* --- Dashboard --- */
+.navbar {
+    background: var(--card-background);
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 24px;
+}
+
+.user-info span {
+    margin-right: 15px;
+}
+
+.btn-logout {
+    width: auto;
+    padding: 8px 15px;
+    background-color: var(--danger-color);
+    text-decoration: none;
+}
+
+.main-content {
+    padding-top: 30px;
+}
+
+.content-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.column {
+    background: var(--card-background);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+
+.add-form textarea,
+.add-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.add-form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.btn-add {
+    width: auto;
+    float: right;
+    padding: 10px 20px;
+}
+
+.item-list {
+    margin-top: 50px;
+}
+
+.item {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    word-break: break-word;
+}
+
+.item p {
+    margin: 0;
+}
+
+.delete-link {
+    color: var(--danger-color);
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 15px;
+}
